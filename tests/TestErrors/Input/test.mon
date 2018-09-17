@@ -1,0 +1,19 @@
+using com.apamax.random.RandomPlugin;
+using com.apamax.random.Generator;
+using com.apama.exceptions.Exception;
+
+monitor Testcase
+{
+	action onload()
+	{
+		testGenerator("uniformBool", RandomPlugin.DIST_UNIFORM, RandomPlugin.OUTPUT_BOOL, new sequence<any>);
+		testGenerator("uniformIntNoArgs", RandomPlugin.DIST_UNIFORM, RandomPlugin.OUTPUT_INTEGER, new sequence<any>);
+	}
+	action testGenerator(string name, integer dist, integer output, sequence<any> args)
+	{
+		try {
+			Generator g := RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, dist, output, args);
+			log "Should have thrown ("+name+", "+dist.toString()+", "+output.toString()+", "+args.toString()+")" at ERROR;
+		} catch (Exception e) {}
+	}
+}

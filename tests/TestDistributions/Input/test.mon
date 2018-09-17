@@ -1,0 +1,26 @@
+using com.apamax.random.RandomPlugin;
+using com.apamax.random.Generator;
+
+monitor Testcase
+{
+	action onload()
+	{
+		testGenerator("uniformInt", RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.OUTPUT_INTEGER, RandomPlugin.DIST_UNIFORM, [<any>(-100), <any>100]));
+		testGenerator("uniformFloat", RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.OUTPUT_REAL, RandomPlugin.DIST_UNIFORM, [<any>(-100.), <any>100.]));
+	}
+	action testGenerator(string name, Generator g)
+	{
+		print "Testing "+name;
+		print g.generate().toString();
+		print g.generate().toString();
+		print g.generate().toString();
+		print g.generate().toString();
+		print g.generate().toString();
+		print g.generate().toString();
+		print g.generate().toString();
+		print g.generate().toString();
+		print g.generate().toString();
+		print g.generate().toString();
+		print g.generate().toString();
+	}
+}

@@ -1,0 +1,31 @@
+using com.apamax.random.RandomPlugin;
+using com.apamax.random.Generator;
+
+monitor Testcase
+{
+	action onload()
+	{
+		testSource("mersienne", RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.OUTPUT_INTEGER, RandomPlugin.DIST_UNIFORM, [<any>(-100), <any>100]));
+		testSourceSeeded("mersienne seeded", RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.OUTPUT_INTEGER, RandomPlugin.DIST_UNIFORM, [<any>(-100), <any>100]));
+	}
+	action testSourceSeeded(string name, Generator g)
+	{
+		g.setSeed(42);
+		testSource(name, g);
+	}
+	action testSource(string name, Generator g)
+	{
+		print "Testing "+name;
+		print g.generate().toString();
+		print g.generate().toString();
+		print g.generate().toString();
+		print g.generate().toString();
+		print g.generate().toString();
+		print g.generate().toString();
+		print g.generate().toString();
+		print g.generate().toString();
+		print g.generate().toString();
+		print g.generate().toString();
+		print g.generate().toString();
+	}
+}
