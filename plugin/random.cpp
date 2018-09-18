@@ -1,6 +1,4 @@
 
-#include <stdint.h>
-#include <cinttypes>
 #include <epl_plugin.hpp>
 #include <random>
 #include <stdexcept>
