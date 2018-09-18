@@ -5,19 +5,19 @@ Apama EPL plugin for generating random numbers for statistical applications
 
 To build the plugin run the following command from an Apama command prompt on Linux:
 
-    g++ -std=c++17 -o $APAMA\_WORK/lib/librandom.so -I$APAMA\_HOME/include -L$APAMA_HOME/lib -lapclient -shared -fPIC random.cpp
+    g++ -std=c++17 -o $APAMA_WORK/lib/librandom.so -I$APAMA\_HOME/include -L$APAMA_HOME/lib -lapclient -shared -fPIC random.cpp
 
 On Windows run this command:
 
-    g++ -std=c++17 -o %APAMA\_WORK%\\lib\\librandom.so -I%APAMA\_HOME%\\include -L%APAMA_HOME%\\lib -lapclient -shared -fPIC random.cpp
+    g++ -std=c++17 -o %APAMA_WORK%\lib\librandom.so -I%APAMA_HOME%\include -L%APAMA_HOME%\lib -lapclient -shared -fPIC random.cpp
 
 To generate the Apama documentation for the RandomPlugin module run this command on Linux:
 
-   java -jar $APAMA\_HOME/lib/ap-generate-apamadoc.jar plugin/doc plugin/eventdefinitions
+    java -jar $APAMA_HOME/lib/ap-generate-apamadoc.jar plugin/doc plugin/eventdefinitions
 
 Or on Windows:
 
-   java -jar %APAMA\_HOME%\\lib\\ap-generate-apamadoc.jar plugin\\doc plugin\\eventdefinitions
+    java -jar %APAMA_HOME%\lib\ap-generate-apamadoc.jar plugin\doc plugin\eventdefinitions
 
 ## Using the plugin
 
