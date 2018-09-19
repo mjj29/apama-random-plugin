@@ -20,8 +20,9 @@ RUN apt-get update && apt-get install -y g++-8 python3
 
 COPY . $APAMA_WORK/plugin
 
-RUN mkdir -p $APAMA_WORK/lib
+RUN mkdir -p $APAMA_WORK/lib $APAMA_WORK/monitors
 RUN g++-8 -std=c++17 -o $APAMA_WORK/lib/librandom.so -I$APAMA_HOME/include -L$APAMA_HOME/lib -lapclient -I$APAMA_WORK/plugin/plugin -shared -fPIC $APAMA_WORK/plugin/plugin/random.cpp
+RUN cp $APAMA_WORK/plugin/plugin/eventdefinitions/RandomPlugin.mon $APAMA_WORK/monitors/
 
 RUN cd ${APAMA_WORK}/plugin/tests && pysys run | tee logfile && grep 'THERE WERE NO NON PASSES' logfile
 
