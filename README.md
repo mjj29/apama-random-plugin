@@ -9,11 +9,14 @@ This works with Apama 10.3.0.1 or 10.1.0.10 (or later fixes to either line)
 
 To build the plugin run the following command from an Apama command prompt on Linux:
 
-    g++ -std=c++17 -o $APAMA_WORK/lib/librandom.so -I$APAMA\_HOME/include -L$APAMA_HOME/lib -lapclient -shared -fPIC random.cpp
+    mkdir -p $APAMA_WORK/lib $APAMA_WORK/monitors
+    g++ -std=c++17 -o $APAMA_WORK/lib/librandom.so -I$APAMA\_HOME/include -L$APAMA_HOME/lib -lapclient -shared -fPIC plugin/random.cpp
+	 cp plugin/eventdefinitions/RandomPlugin.mon $APAMA_WORK/monitors/RandomPlugin.mon
 
 On Windows run this command:
 
-    g++ -std=c++17 -o %APAMA_WORK%\lib\librandom.so -I%APAMA_HOME%\include -L%APAMA_HOME%\lib -lapclient -shared -fPIC random.cpp
+    g++ -std=c++17 -o %APAMA_WORK%\lib\librandom.so -I%APAMA_HOME%\include -L%APAMA_HOME%\lib -lapclient -shared -fPIC plugin\random.cpp
+	 copy plugin\eventdefinitions\RandomPlugin.mon %APAMA_WORK%\monitors\RandomPlugin.mon
 
 To generate the Apama documentation for the RandomPlugin module run this command on Linux:
 
