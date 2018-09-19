@@ -1,6 +1,10 @@
 # apama-random-plugin
 Apama EPL plugin for generating random numbers for statistical applications
 
+## Supported Apama version
+
+This works with Apama 10.3.0.1 or 10.1.0.10 (or later fixes to either line)
+
 ## Building the plugin
 
 To build the plugin run the following command from an Apama command prompt on Linux:
@@ -18,6 +22,27 @@ To generate the Apama documentation for the RandomPlugin module run this command
 Or on Windows:
 
     java -jar %APAMA_HOME%\lib\ap-generate-apamadoc.jar plugin\doc plugin\eventdefinitions
+
+## Building using Docker
+
+There is a provided Dockerfile which will build the plugin, run tests and produce an image which is your base image, plus the CSV plugin. Application images can then be built from this image. To build the image run:
+
+    docker build -t apama_with_random_plugin .
+
+By default the public docker images from Docker Store for 10.3 will be used (once 10.3 has been released). To use an older version run:
+
+    docker build -t apama_with_random_plugin --build-arg APAMA_VERSION=10.1 .
+
+To use custom images from your own repository then use:
+
+    docker build -t apama_with_random_plugin --build-arg APAMA_BUILDER=builderimage --build-arg APAMA_IMAGE=runtimeimage .
+
+## Running tests
+
+To run the tests for the plugin you will need to use an Apama command prompt, then run the tests from within the tests directory:
+
+    pysys run
+
 
 ## Using the plugin
 
