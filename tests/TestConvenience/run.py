@@ -12,4 +12,11 @@ class PySysTest(ApamaBaseTest):
 		correlator.flush() 
 
 	def validate(self):
-		pass
+		self.assertGrep('testcorrelator.log', expr='ERROR', contains=False)
+		self.assertGrep('testcorrelator.out', expr='Testing uniformInt')
+		self.assertGrep('testcorrelator.out', expr='Testing uniformFloat')
+		self.assertGrep('testcorrelator.out', expr='Testing binomial')
+		self.assertGrep('testcorrelator.out', expr='Testing normal')
+		self.assertGrep('testcorrelator.out', expr='Testing poisson')
+		self.assertLineCount('testcorrelator.out', expr='any\\(integer', condition='==33')
+		self.assertLineCount('testcorrelator.out', expr='any\\(float', condition='==22')

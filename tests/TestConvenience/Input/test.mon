@@ -7,6 +7,9 @@ monitor Testcase
 	{
 		testGenerator("uniformInt", RandomPlugin.createUniformIntGenerator(-100, 100));
 		testGenerator("uniformFloat", RandomPlugin.createUniformFloatGenerator(-100., 100.));
+		testGenerator("binomial", RandomPlugin.createBinomialGenerator(100, 0.5));
+		testGenerator("poisson", RandomPlugin.createPoissonGenerator(25.0));
+		testGenerator("normal", RandomPlugin.createNormalGenerator(50.0, 2.0));
 	}
 	action testGenerator(string name, Generator g)
 	{

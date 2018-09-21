@@ -7,6 +7,21 @@ monitor Testcase
 	{
 		testGenerator("uniformInt", RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.OUTPUT_INTEGER, RandomPlugin.DIST_UNIFORM, [<any>(-100), <any>100]));
 		testGenerator("uniformFloat", RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.OUTPUT_REAL, RandomPlugin.DIST_UNIFORM, [<any>(-100.), <any>100.]));
+		testGenerator("bernoulli", RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.OUTPUT_BOOL, RandomPlugin.DIST_BERNOULLI, [<any>10.0]));
+		testGenerator("binomial", RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.OUTPUT_INTEGER, RandomPlugin.DIST_BINOMIAL, [<any>3, <any>10.0]));
+		testGenerator("negbinomial", RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.OUTPUT_INTEGER, RandomPlugin.DIST_NEGATIVE_BINOMIAL, [<any>3, <any>10.0]));
+		testGenerator("geometric", RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.OUTPUT_INTEGER, RandomPlugin.DIST_GEOMETRIC, [<any>0.5]));
+		testGenerator("poisson", RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.OUTPUT_INTEGER, RandomPlugin.DIST_POISSON, [<any>0.5]));
+		testGenerator("exponential", RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.OUTPUT_REAL, RandomPlugin.DIST_EXPONENTIAL, [<any>0.5]));
+		testGenerator("gamma", RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.OUTPUT_REAL, RandomPlugin.DIST_GAMMA, [<any>0.5,<any>1.0]));
+		testGenerator("weibull", RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.OUTPUT_REAL, RandomPlugin.DIST_WEIBULL, [<any>0.5,<any>1.0]));
+		testGenerator("extreme", RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.OUTPUT_REAL, RandomPlugin.DIST_EXTREME_VALUE, [<any>0.5,<any>1.0]));
+		testGenerator("normal", RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.OUTPUT_REAL, RandomPlugin.DIST_NORMAL, [<any>0.5,<any>1.0]));
+		testGenerator("lognormal", RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.OUTPUT_REAL, RandomPlugin.DIST_LOGNORMAL, [<any>0.5,<any>1.0]));
+		testGenerator("chisquared", RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.OUTPUT_REAL, RandomPlugin.DIST_CHI_SQUARED, [<any>0.5]));
+		testGenerator("cauchy", RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.OUTPUT_REAL, RandomPlugin.DIST_CAUCHY, [<any>0.5,<any>1.0]));
+		testGenerator("fisher", RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.OUTPUT_REAL, RandomPlugin.DIST_FISHER_F, [<any>0.5,<any>1.0]));
+		testGenerator("student", RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.OUTPUT_REAL, RandomPlugin.DIST_STUDENT_T, [<any>0.5]));
 	}
 	action testGenerator(string name, Generator g)
 	{

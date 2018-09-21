@@ -6,14 +6,85 @@ monitor Testcase
 {
 	action onload()
 	{
-		testGenerator("uniformBool", RandomPlugin.DIST_UNIFORM, RandomPlugin.OUTPUT_BOOL, new sequence<any>);
-		testGenerator("uniformIntNoArgs", RandomPlugin.DIST_UNIFORM, RandomPlugin.OUTPUT_INTEGER, new sequence<any>);
+		testGenerator("unknownSource", 999, RandomPlugin.DIST_UNIFORM, RandomPlugin.OUTPUT_INTEGER, new sequence<any>);
+		testGenerator("unknownDist", RandomPlugin.SOURCE_MERSEINNE, 999, RandomPlugin.OUTPUT_INTEGER, new sequence<any>);
+		testGenerator("unknownOutput", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_UNIFORM, 999, new sequence<any>);
+
+		testGenerator("uniformBool", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_UNIFORM, RandomPlugin.OUTPUT_BOOL, [<any> 1, <any> 2]);
+		testGenerator("uniformIntNoArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_UNIFORM, RandomPlugin.OUTPUT_INTEGER, new sequence<any>);
+		testGenerator("uniformRealNoArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_UNIFORM, RandomPlugin.OUTPUT_REAL, new sequence<any>);
+		testGenerator("uniformIntFloatArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_UNIFORM, RandomPlugin.OUTPUT_INTEGER, [<any>1.0, <any>2.0]);
+		testGenerator("uniformRealIntArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_UNIFORM, RandomPlugin.OUTPUT_REAL, [<any>1, <any>2]);
+
+		testGenerator("bernoulliReal", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_BERNOULLI, RandomPlugin.OUTPUT_REAL, [<any>0.5]);
+		testGenerator("bernoulliNoArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_BERNOULLI, RandomPlugin.OUTPUT_BOOL, new sequence<any>);
+		testGenerator("bernoulliIntArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_BERNOULLI, RandomPlugin.OUTPUT_BOOL, [<any>1]);
+
+		testGenerator("binomialReal", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_BINOMIAL, RandomPlugin.OUTPUT_REAL, [<any>1, <any>0.5]);
+		testGenerator("binomialOneArg", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_BINOMIAL, RandomPlugin.OUTPUT_INTEGER, [<any>1]);
+		testGenerator("binomialIntArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_BINOMIAL, RandomPlugin.OUTPUT_INTEGER, [<any>1, <any>2]);
+
+		testGenerator("negbinomialReal", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_NEGATIVE_BINOMIAL, RandomPlugin.OUTPUT_REAL, [<any>1, <any>0.5]);
+		testGenerator("negbinomialOneArg", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_NEGATIVE_BINOMIAL, RandomPlugin.OUTPUT_INTEGER, [<any>1]);
+		testGenerator("negbinomialIntArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_NEGATIVE_BINOMIAL, RandomPlugin.OUTPUT_INTEGER, [<any>1, <any>2]);
+
+		testGenerator("geometricReal", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_GEOMETRIC, RandomPlugin.OUTPUT_REAL, [<any>0.5]);
+		testGenerator("geometricNoArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_GEOMETRIC, RandomPlugin.OUTPUT_INTEGER, new sequence<any>);
+		testGenerator("geometricIntArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_GEOMETRIC, RandomPlugin.OUTPUT_INTEGER, [<any>1]);
+
+		testGenerator("poissonReal", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_POISSON, RandomPlugin.OUTPUT_REAL, [<any>0.5]);
+		testGenerator("poissonNoArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_POISSON, RandomPlugin.OUTPUT_INTEGER, new sequence<any>);
+		testGenerator("poissonIntArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_POISSON, RandomPlugin.OUTPUT_INTEGER, [<any>1]);
+
+		testGenerator("expInt", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_EXPONENTIAL, RandomPlugin.OUTPUT_INTEGER, [<any>0.5]);
+		testGenerator("expNoArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_EXPONENTIAL, RandomPlugin.OUTPUT_REAL, new sequence<any>);
+		testGenerator("expIntArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_EXPONENTIAL, RandomPlugin.OUTPUT_REAL, [<any>1]);
+
+		testGenerator("gammaInt", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_GAMMA, RandomPlugin.OUTPUT_INTEGER, [<any>0.5,<any>1.0]);
+		testGenerator("gammaOneArg", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_GAMMA, RandomPlugin.OUTPUT_REAL, [<any>1.0]);
+		testGenerator("gammaIntArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_GAMMA, RandomPlugin.OUTPUT_REAL, [<any>1,<any>2]);
+
+		testGenerator("weibullInt", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_WEIBULL, RandomPlugin.OUTPUT_INTEGER, [<any>0.5,<any>1.0]);
+		testGenerator("weibullOneArg", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_WEIBULL, RandomPlugin.OUTPUT_REAL, [<any>1.0]);
+		testGenerator("weibullIntArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_WEIBULL, RandomPlugin.OUTPUT_REAL, [<any>1,<any>2]);
+
+		testGenerator("extremeInt", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_EXTREME_VALUE, RandomPlugin.OUTPUT_INTEGER, [<any>0.5,<any>1.0]);
+		testGenerator("extremeOneArg", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_EXTREME_VALUE, RandomPlugin.OUTPUT_REAL, [<any>1.0]);
+		testGenerator("extremeIntArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_EXTREME_VALUE, RandomPlugin.OUTPUT_REAL, [<any>1,<any>2]);
+
+		testGenerator("normalInt", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_NORMAL, RandomPlugin.OUTPUT_INTEGER, [<any>0.5,<any>1.0]);
+		testGenerator("normalOneArg", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_NORMAL, RandomPlugin.OUTPUT_REAL, [<any>1.0]);
+		testGenerator("normalIntArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_NORMAL, RandomPlugin.OUTPUT_REAL, [<any>1,<any>2]);
+
+		testGenerator("logNormalInt", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_LOGNORMAL, RandomPlugin.OUTPUT_INTEGER, [<any>0.5,<any>1.0]);
+		testGenerator("logNormalOneArg", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_LOGNORMAL, RandomPlugin.OUTPUT_REAL, [<any>1.0]);
+		testGenerator("logNormalIntArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_LOGNORMAL, RandomPlugin.OUTPUT_REAL, [<any>1,<any>2]);
+
+		testGenerator("chiSquaredInt", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_CHI_SQUARED, RandomPlugin.OUTPUT_INTEGER, [<any>0.5]);
+		testGenerator("chiSquaredNoArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_CHI_SQUARED, RandomPlugin.OUTPUT_REAL, new sequence<any>);
+		testGenerator("chiSquaredIntArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_CHI_SQUARED, RandomPlugin.OUTPUT_REAL, [<any>1]);
+
+		testGenerator("cauchyInt", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_CAUCHY, RandomPlugin.OUTPUT_INTEGER, [<any>0.5,<any>1.0]);
+		testGenerator("cauchyOneArg", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_CAUCHY, RandomPlugin.OUTPUT_REAL, [<any>1.0]);
+		testGenerator("cauchyIntArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_CAUCHY, RandomPlugin.OUTPUT_REAL, [<any>1,<any>2]);
+
+		testGenerator("fisherInt", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_FISHER_F, RandomPlugin.OUTPUT_INTEGER, [<any>0.5,<any>1.0]);
+		testGenerator("fisherOneArg", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_FISHER_F, RandomPlugin.OUTPUT_REAL, [<any>1.0]);
+		testGenerator("fisherIntArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_FISHER_F, RandomPlugin.OUTPUT_REAL, [<any>1,<any>2]);
+
+		testGenerator("studentInt", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_STUDENT_T, RandomPlugin.OUTPUT_INTEGER, [<any>0.5,<any>1.0]);
+		testGenerator("studentNoArg", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_STUDENT_T, RandomPlugin.OUTPUT_REAL, new sequence<any>);
+		testGenerator("studentIntArgs", RandomPlugin.SOURCE_MERSEINNE, RandomPlugin.DIST_STUDENT_T, RandomPlugin.OUTPUT_REAL, [<any>1,<any>2]);
+
+
 	}
-	action testGenerator(string name, integer dist, integer output, sequence<any> args)
+	action testGenerator(string name, integer source, integer dist, integer output, sequence<any> args)
 	{
 		try {
-			Generator g := RandomPlugin.createGenerator(RandomPlugin.SOURCE_MERSEINNE, dist, output, args);
+			Generator g := RandomPlugin.createGenerator(source, output, dist, args);
 			log "Should have thrown ("+name+", "+dist.toString()+", "+output.toString()+", "+args.toString()+")" at ERROR;
-		} catch (Exception e) {}
+		} catch (Exception e) {
+			log name+e.toString();
+		}
 	}
 }

@@ -12,4 +12,9 @@ class PySysTest(ApamaBaseTest):
 		correlator.flush() 
 
 	def validate(self):
-		pass
+		self.assertGrep('testcorrelator.log', expr='ERROR', contains=False)
+		self.assertLineCount('testcorrelator.log', expr='Invalid random source specified \\(must be SOURCE_MERSEINNE, SOURCE_LCG or SOURCE_DEVICE\\)', condition='==1')
+		self.assertLineCount('testcorrelator.log', expr='Invalid distribution specified', condition='==1')
+		self.assertLineCount('testcorrelator.log', expr='Invalid output format specified \\(must be OUTPUT_REAL, OUTPUT_INTEGER or OUTPUT_BOOL\\)', condition='==1')
+		self.assertLineCount('testcorrelator.log', expr='Invalid combination of distribution and output format specified', condition='==16')
+		self.assertLineCount('testcorrelator.log', expr='Invalid distribution arguments specified', condition='==34')

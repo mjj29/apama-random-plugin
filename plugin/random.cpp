@@ -53,6 +53,12 @@ auto ProperlySeededRandomEngine () -> typename std::enable_if<!!N, T*>::type {
 	}
 }
 
+class random_error: public std::runtime_error
+{
+	using std::runtime_error::runtime_error;
+};
+
+
 /** Random plugin class */
 class Random: public EPLPlugin<Random>
 {
@@ -214,10 +220,22 @@ private:
 					if (output == OUTPUT_REAL)
 						return constructGeneratorDE<ENGINE, std::student_t_distribution<double> >(get<double>(distArgs[0]));
 					break;		
+				default:
+					throw random_error("Invalid distribution specified");
 			}
-			throw std::runtime_error("Invalid distribution, output format or combination of distribution and output format specified");
+			switch (output) {
+				case OUTPUT_REAL:
+				case OUTPUT_INTEGER:
+				case OUTPUT_BOOL:
+					throw random_error("Invalid combination of distribution and output format specified");
+				default:
+					throw random_error("Invalid output format specified (must be OUTPUT_REAL, OUTPUT_INTEGER or OUTPUT_BOOL)");
+			}
+			throw random_error("Invalid distribution, output format or combination of distribution and output format specified");
+		} catch (const random_error &e) {
+			throw;
 		} catch (const std::exception &e) {
-			throw std::runtime_error("Invalid distribution arguments specified");
+			throw random_error("Invalid distribution arguments specified");
 		}
 	}
 
@@ -232,7 +250,7 @@ private:
 			case SOURCE_DEVICE:
 				return constructGeneratorE<std::random_device>(output, dist, distArgs);
 			default:
-				throw std::runtime_error("Invalid random source specified (must be RANDOM_MERSEINNE, RANDOM_LCG or RANDOM_DEVICE");
+				throw random_error("Invalid random source specified (must be SOURCE_MERSEINNE, SOURCE_LCG or SOURCE_DEVICE)");
 		}
 	}
 public:
