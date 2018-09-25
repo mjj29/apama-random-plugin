@@ -90,6 +90,8 @@ class Random: public EPLPlugin<Random>
 		{
 			if constexpr (has_seed_method<ENGINE>::value) {
 				engine->seed(get<to_data_t_type_t<typename ENGINE::result_type> >(seed));
+			} else {
+				throw random_error("This engine cannot be seeded");
 			}
 		}
 		DIST dist;
